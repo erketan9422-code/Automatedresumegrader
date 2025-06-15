@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Wizard AI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <style>
+        /* Import Modern Professional Font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    background: linear-gradient(135deg, #e0e7ff 0%, #f8fafc 100%);
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    min-height: 100vh;
+}
+
+/* Main Container */
+.container {
+    max-width: 500px;
+    margin: 40px auto;
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 8px 32px rgba(31, 41, 55, 0.15);
+    padding: 36px 32px 28px 32px;
+}
+
+/* Heading */
+h1 {
+    text-align: center;
+    color: #3b82f6;
+    margin-bottom: 28px;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+/* Form Styling */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px; /* 👈 Less vertical gap */
+}
+
+/* Form Group */
+.form-group {
+    margin-bottom: 22px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+/* Labels */
+label {
+    margin-bottom: 7px;
+    color: #374151;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+/* Inputs & Textareas */
+input[type="text"],
+input[type="email"],
+textarea {
+    padding: 12px 44px 12px 14px;
+    border: 1.5px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 1rem;
+    background: #f3f4f6;
+    transition: border 0.2s;
+    outline: none;
+    resize: none;
+}
+
+input:focus,
+textarea:focus {
+    border: 1.5px solid #3b82f6;
+    background: #fff;
+}
+
+/* Textarea Specific */
+textarea {
+    min-height: 60px;
+    max-height: 180px;
+}
+
+/* Voice Button */
+button.voice-btn {
+    position: absolute;
+    right: 10px;
+    top: 38px;
+    background: #f1f5f9;
+    border: none;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    font-size: 1.2rem;
+    color: #3b82f6;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    box-shadow: 0 2px 8px rgba(59, 130, 246, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button.voice-btn:hover {
+    background: #3b82f6;
+    color: #fff;
+}
+
+/* Submit Button */
+button[type="submit"] {
+    width: 100%;
+    padding: 13px 0;
+    background: linear-gradient(90deg, #3b82f6 60%, #6366f1 100%);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(59, 130, 246, 0.10);
+    transition: background 0.2s;
+}
+
+button[type="submit"]:hover {
+    background: linear-gradient(90deg, #2563eb 60%, #4f46e5 100%);
+}
+
+/* Response Message */
+#responseMessage {
+    margin-top: 18px;
+    text-align: center;
+    color: #10b981;
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+#responseMessage.error {
+    color: #ef4444;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .container {
+        padding: 18px 8px 16px 8px;
+    }
+    h1 {
+        font-size: 1.4rem;
+    }
+    .form-group {
+        margin-bottom: 16px;
+    }
+}
+    </style>
+  
+    <div class="container">
+        <h1>Resume Wizard AI</h1>
+        <form id="resumeForm">
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" required>
+                <button type="button" id="voiceName" class="voice-btn">🎙️</button>
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required>
+                <button type="button" id="voiceEmail" class="voice-btn">🎙️</button>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="text" id="phone" name="phone" required>
+                <button type="button" id="voicePhone" class="voice-btn">🎙️</button>
+            </div>
+            <div class="form-group">
+                <label for="linkedin">LinkedIn Profile</label>
+                <input type="text" id="linkedin" name="linkedin" required>
+                <button type="button" id="voiceLinkedin" class="voice-btn">🎙️</button>
+            </div>
+            <div class="form-group">
+                <label for="address">Address</label>
+                <input type="text" id="address" name="address" required>
+                <button type="button" id="voiceAddress" class="voice-btn">🎙️</button>
+            </div>
+            <div class="form-group">
+                <label for="skills">Skills (comma separated)</label>
+                <input type="text" id="skills" name="skills" required>
+                <button type="button" id="voiceSkills" class="voice-btn">🎙️</button>
+            </div>
+            <div class="form-group">
+                <label for="education">Education</label>
+                <textarea id="education" name="education" required></textarea>
+                <button type="button" id="voiceEducation" class="voice-btn">🎙️</button>
+            </div>
+            <div class="form-group">
+                <label for="experience">Work Experience</label>
+                <textarea id="experience" name="experience" required></textarea>
+                <button type="button" id="voiceExperience" class="voice-btn">🎙️</button>
+            </div>
+            <div class="form-group">
+                <label for="projects">Achievements & Projects</label>
+                <textarea id="projects" name="projects" required></textarea>
+                <button type="button" id="voiceProjects" class="voice-btn">🎙️</button>
+            </div>
+            <div class="form-group">
+                <button type="submit">Generate Resume</button>
+            </div>
+        </form>
+        <div id="responseMessage"></div>
+    </div>
+
+    <script>
+        // Check if the browser supports Speech Recognition
+        const isSpeechRecognitionSupported = 'webkitSpeechRecognition' in window || 'SpeechRecognition' in window;
+        let recognition;
+
+        if (isSpeechRecognitionSupported) {
+            recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+            recognition.lang = 'en-US';
+            recognition.continuous = false;
+            recognition.interimResults = false;
+            recognition.maxAlternatives = 1;
+        } else {
+            console.log("Speech Recognition is not supported by your browser.");
+        }
+
+        // Function to start speech recognition
+        function startSpeechRecognition(fieldId) {
+            recognition.start();
+
+            recognition.onresult = function(event) {
+                const speechResult = event.results[0][0].transcript;
+                document.getElementById(fieldId).value = speechResult;
+            };
+
+            recognition.onerror = function(event) {
+                console.error("Speech recognition error", event.error);
+            };
+        }
+
+        // Event listeners for voice buttons
+        document.getElementById('voiceName').addEventListener('click', function() {
+            startSpeechRecognition('name');
+        });
+
+        document.getElementById('voiceEmail').addEventListener('click', function() {
+            startSpeechRecognition('email');
+        });
+
+        document.getElementById('voicePhone').addEventListener('click', function() {
+            startSpeechRecognition('phone');
+        });
+
+        document.getElementById('voiceLinkedin').addEventListener('click', function() {
+            startSpeechRecognition('linkedin');
+        });
+
+        document.getElementById('voiceAddress').addEventListener('click', function() {
+            startSpeechRecognition('address');
+        });
+
+        document.getElementById('voiceSkills').addEventListener('click', function() {
+            startSpeechRecognition('skills');
+        });
+
+        document.getElementById('voiceEducation').addEventListener('click', function() {
+            startSpeechRecognition('education');
+        });
+
+        document.getElementById('voiceExperience').addEventListener('click', function() {
+            startSpeechRecognition('experience');
+        });
+
+        document.getElementById('voiceProjects').addEventListener('click', function() {
+            startSpeechRecognition('projects');
+        });
+
+        // Handle form submission
+        document.getElementById('resumeForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                linkedin: document.getElementById('linkedin').value,
+                address: document.getElementById('address').value,
+                skills: document.getElementById('skills').value.split(','),
+                experience: document.getElementById('experience').value,
+                education: document.getElementById('education').value,
+                projects: document.getElementById('projects').value
+            };
+
+            document.getElementById('responseMessage').innerHTML = 'Generating resume...';
+
+            fetch('http://127.0.0.1:5000/generate-resume', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.blob())
+            .then(blob => {
+                const url = window.URL.createObjectURL(blob);
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = 'resume.pdf';
+                link.click();
+                document.getElementById('responseMessage').innerHTML = '';
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById('responseMessage').innerHTML = 'There was an error generating your resume. Please try again.';
+                document.getElementById('responseMessage').classList.add('error');
+            });
+        });
+    </script>
+
+</body>
+</html>
