@@ -1,0 +1,73 @@
+# *SD-1 (Automated Resume Grader)*
+
+---
+
+### 1. Why This Matters
+
+Hiring managers skim hundreds of résumés every week. Job-seekers rarely know if theirs will survive the first glance. A quick, fair résumé “health check” can save everyone time and help the right talent stand out.
+
+---
+
+### 2. Your Mission
+
+Build a web or mobile prototype that **reads a résumé and returns:**
+
+1. **A score out of 100** (think “credit score for résumés”).
+2. **Actionable tips** a candidate can follow to level up their document.
+
+---
+
+### 3. Core Must-Haves
+
+| Area | What We Expect |
+| --- | --- |
+| **Upload & Parse** | Accept PDF, pull out contact info, education, skills, and experience. |
+| **Scoring Engine** | Grade formatting, section completeness, keyword relevance, and clarity. |
+| **Feedback** | For every low-scoring area, give at least one specific fix (e.g., “add numbers to achievements”). |
+| **UI** | Simple dashboard to upload, view score, and read feedback. |
+
+---
+
+### 4. Nice-to-Have Extras (Use *only* if time allows)
+
+- Allow the user to upload DOC, TXT files as well.
+- Role-specific scoring modes (i.e., a developer, a data scientist, and a designer should be scored differently).
+- AI tone analysis (it should be able to observe the tone of the content).
+- Version history so users can track improvements.
+- A “**Create Resume**” section where a user can create one if the user doesn’t have one.
+
+---
+
+### 5. Judging Rubric
+
+| Criterion | Weight |
+| --- | --- |
+| Functionality & Stability | 30 % |
+| Relevance to the Problem Statement | 20 % |
+| UX Clarity & Polish | 20 % |
+| Presentation | 15 % |
+|  Documentation | 15 % |
+
+---
+
+### 6. Tech Freedom
+
+Feel free to use any open-source NLP or résumé-parsing libraries, cloud services, or your favorite framework. Just cite what you use.
+
+---
+
+### **7. Data Starter Pack**
+
+- Use public resume datasets like **Kaggle Resume Dataset** or **OpenResumes** to get started.
+- Focus on grading criteria such as **Keyword matching** (job-specific terms), **Experience relevance** (years in the field, skills listed), and **Formatting** (structure, consistency, readability).
+- Use basic NLP tools like **spaCy** or **NLTK** for text extraction and analysis.
+
+---
+
+### **8. Team Tips**
+
+- Start with basic grading (keywords, experience) and improve later.
+- Seed with mock resumes to test UX early.
+- Commit small, frequent changes; write simple tests.
+- Keep UI minimal; focus on core features first.
+- Demonstrate how the system helps users improve their resumes.
